@@ -59,9 +59,8 @@ router.get('/', async (req, res) => {
                 redirect_uri
             })
         });
-        
-        const responseText = await response.text();
-        console.log(responseText)
+
+        console.log(data.text())
 
         const data = await response.json();
         const access_token = data.access_token;
