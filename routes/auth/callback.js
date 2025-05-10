@@ -79,8 +79,12 @@ router.get('/', async (req, res) => {
         });
 
         console.log('Passing userInfo');
+
+        const userProfileText = await userProfile.text();
+
+        console.log('User text', userProfileText);
         
-        const userProfileJson = await userProfile.json();
+        const userProfileJson = JSON.parse(userProfileText);
 
         console.log('Passed UserInfo');
 
