@@ -95,9 +95,16 @@ router.get('/', async (req, res) => {
             sameSite: 'none',       // Required for cross-site cookies
         }); // Persists until user clicked logout
 
-        res.json({
-            success: true,
-        })
+        res.send(`
+            <html>
+                <head>
+                <script>
+                    window.location.href = 'https://spotify-profile-dashboard.vercel.app/profile';
+                </script>
+                </head>
+                <body>Redirecting to your dashboard...</body>
+            </html>
+        `);
     } catch (err) {
         console.error(`Error: ${err}`);
         res.send(`Error: ${err}`);
