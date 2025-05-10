@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
         return;
     }
 
-    // const redisClient = getRedisClient();
+    const redisClient = getRedisClient();
     // let storedState = null;
     // if (redisClient) {
     //     await redisClient.get('state').then((reply) => {
