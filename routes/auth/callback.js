@@ -60,8 +60,6 @@ router.get('/', async (req, res) => {
             })
         });
 
-        console.log(data.text())
-
         const data = await response.json();
         const access_token = data.access_token;
         const refresh_token = data.refresh_token;
