@@ -22,21 +22,21 @@ router.get('/', async (req, res) => {
         return;
     }
 
-    const redisClient = getRedisClient();
-    let storedState = null;
-    if (redisClient) {
-        await redisClient.get('state').then((reply) => {
-            storedState = reply;
-        });
-    }
+    // const redisClient = getRedisClient();
+    // let storedState = null;
+    // if (redisClient) {
+    //     await redisClient.get('state').then((reply) => {
+    //         storedState = reply;
+    //     });
+    // }
 
-    if (state !== storedState) {
-        console.error('State mismatch');
-        res.send('State mismatch');
-        return;
-    }
+    // if (state !== storedState) {
+    //     console.error('State mismatch');
+    //     res.send('State mismatch');
+    //     return;
+    // }
 
-    redisClient?.del('state');
+    // redisClient?.del('state');
     
     // Exchange the code for an access token and refresh token
     // Save the tokens in Redis
@@ -95,7 +95,7 @@ router.get('/', async (req, res) => {
             sameSite: 'none',       // Required for cross-site cookies
         }); // Persists until user clicked logout
 
-        res.redirect('http://localhost:5173/profile');
+        res.redirect('https://spotify-profile-dashboard.vercel.app/profile');
     } catch (err) {
         console.error(`Error: ${err}`);
         res.send(`Error: ${err}`);

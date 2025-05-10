@@ -21,10 +21,10 @@ router.get('/', (req, res) => {
         state
     });
 
-    const redisClient = getRedisClient();
-    if (redisClient) {
-        redisClient.set('state', state);
-    }
+    // const redisClient = getRedisClient();
+    // if (redisClient) {
+    //     redisClient.set('state', state);
+    // }
 
     res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });

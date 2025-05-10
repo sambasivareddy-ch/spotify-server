@@ -30,12 +30,12 @@ dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 const PORT = process.env.PORT || 3000;
+app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:5173',   
+    origin: 'https://spotify-profile-dashboard.vercel.app',   
     methods: 'GET,POST,PUT,DELETE',
     credentials: true
 }));
-app.use(cookieParser());
 
 // Initialize Redis client
 try {
