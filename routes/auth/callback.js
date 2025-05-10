@@ -22,6 +22,8 @@ router.get('/', async (req, res) => {
         return;
     }
 
+    console.log('Passed Test');
+
     const redisClient = getRedisClient();
     // let storedState = null;
     // if (redisClient) {
@@ -60,20 +62,27 @@ router.get('/', async (req, res) => {
             })
         });
         
-        const responseText = await response.text();
-        console.log(responseText)
+        console.log('Passing Response');
 
         const data = await response.json();
         const access_token = data.access_token;
         const refresh_token = data.refresh_token;
         const expires_in = data.expires_in;
 
+        console.log('Passed Response');
+        
+
         const userProfile = await fetch('https://api.spotify.com/v1/me', {
             headers: {
                 Authorization: `Bearer ${access_token}`,
             },
         });
+
+        console.log('Passing userInfo');
+        
         const userProfileJson = await userProfile.json();
+
+        console.log('Passed UserInfo');
 
         if (userProfileJson.error) {
             res.status(userProfileJson.error.status | 500).json({ 
