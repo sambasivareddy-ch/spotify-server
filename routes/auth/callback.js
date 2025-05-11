@@ -99,7 +99,7 @@ router.get('/', async (req, res) => {
             <html>
                 <head>
                 <script>
-                    window.location.href = 'https://music-dashboard-spotify.vercel.app/profile';
+                    window.location.href = '${process.env.FRONTEND_URL}/profile';
                 </script>
                 </head>
                 <body>Redirecting to your dashboard...</body>

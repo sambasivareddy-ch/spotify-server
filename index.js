@@ -32,7 +32,7 @@ app.use(express.json())
 const PORT = process.env.PORT || 3000;
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://music-dashboard-spotify.vercel.app',   
+    origin: `${process.env.FRONTEND_URL}`,   
     methods: 'GET,POST,PUT,DELETE',
     credentials: true
 }));
