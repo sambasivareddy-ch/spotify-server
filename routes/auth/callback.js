@@ -99,7 +99,7 @@ router.get('/', async (req, res) => {
             <html>
                 <head>
                 <script>
-                    window.location.href = '${process.env.FRONTEND_URL}/profile';
+                    window.location.href = '${req.headers.origin}/profile';
                 </script>
                 </head>
                 <body>Redirecting to your dashboard...</body>

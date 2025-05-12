@@ -27,7 +27,7 @@ const app = express();
 
 const allowedOrigins = [
   'https://spotify-profile-client-production.up.railway.app',
-  'https://music-dashboard-spotify.vercel.app/',
+  'https://music-dashboard-spotify.vercel.app',
 ];
 
 // Configurations and environment variables setup
