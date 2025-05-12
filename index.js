@@ -25,6 +25,11 @@ import { initializeRedis } from './db/redis.js';
 
 const app = express();
 
+const allowedOrigins = [
+  'https://spotify-profile-client-production.up.railway.app',
+  'https://music-dashboard-spotify.vercel.app/',
+];
+
 // Configurations and environment variables setup
 dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,9 +37,17 @@ app.use(express.json())
 const PORT = process.env.PORT || 3000;
 app.use(cookieParser());
 app.use(cors({
-    origin: `${process.env.FRONTEND_URL}`,   
-    methods: 'GET,POST,PUT,DELETE',
-    credentials: true
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      // Allow the request from allowed origins or if no origin is provided (e.g., mobile apps)
+      callback(null, true);
+    } else {
+      // Reject requests from other origins
+      callback(new Error('Not allowed by CORS'), false);
+    }
+  },
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true,
 }));
 
 // Initialize Redis client
